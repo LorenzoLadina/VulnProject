@@ -1,0 +1,18 @@
+This is partial source-code
+
+
+def SQLi_level5():
+    if request.authorization and request.authorization.username == 'level5' and request.authorization.password == passwords['level5']:
+        msg = ''
+        if request.method == 'POST' and 'username' in request.form:
+            username = request.form['username']
+            with connection.cursor() as cursor:
+                query = "SELECT * FROM level6 WHERE username = '%s'" % username
+                print(query)
+                cursor.execute(query)
+                account = cursor.fetchone()
+                # if account:
+                #   msg = 'user exists !'
+                # else:
+                #   msg = 'this user do not exists!'
+.....

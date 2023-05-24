@@ -1,0 +1,44 @@
+{% extends 'ClientAttack/layout.html' %}
+
+{% block title %}Search User{% endblock %}
+
+{% block variablepage %}
+    {% if request.cookies.get('id') == admin_id %}
+        <a href="{{ url_for('BankInboxRequests') }}"><i class="fas fa-user-circle"></i>Inbox Requests</a>
+    {% else %}
+        <a href="{{ url_for('BankRequestSupport') }}"><i class="fas fa-user-circle"></i>Request Support</a>
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+<h2>Search information about users</h2>
+<div>
+    <form action="BankSearchUser" method="post">
+        <input type="text" name="user" placeholder="username" required>
+        <input type="submit" name="search" value="Send">
+    </form>
+    <br>
+    {{msg}}
+    {% if account %}
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td>{{ account['username'] }}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{ account['email'] }}</td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td>
+                {% autoescape off %} 
+                {{ account['description'] }}
+                {% endautoescape%}
+            </td>
+        </tr>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

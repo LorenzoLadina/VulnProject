@@ -1,0 +1,24 @@
+This is partial source-code
+
+
+def SQLi_level1():
+    if request.authorization and request.authorization.username == 'level1' and request.authorization.password == passwords['level1']:
+        msg = ''
+        if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+            username = request.form['username'].replace("'","").replace('#','').replace('"','')
+            password = request.form['password']
+
+            blacklist = ['or','\'or','and','\'and']
+            if any(ch in blacklist for ch in password.lower().split()):
+                msg = 'Illegal character detected!'
+            else:
+                with connection.cursor() as cursor:
+                    query = "SELECT * FROM level2 WHERE username = '%s' AND password = '%s' " %(username, password)
+                    print(query)
+                    cursor.execute(query)
+                    account = cursor.fetchone()
+                    if account:
+                        return render_template('success.html')
+                    else:
+                        msg = 'Incorrect password!'
+.....

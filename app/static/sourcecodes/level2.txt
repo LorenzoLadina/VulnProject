@@ -1,0 +1,17 @@
+This is partial source-code
+
+
+def SQLi_level2():
+    if request.authorization and request.authorization.username == 'level2' and request.authorization.password == passwords['level2']:
+        msg = ''
+        if request.method == 'POST' and 'username' in request.form:
+            username = request.form['username']
+            with connection.cursor() as cursor:
+                query = "SELECT id,username FROM level3 WHERE username = '%s'" % username
+                print(query)
+                cursor.execute(query)
+                account = cursor.fetchone()
+
+                if account:
+                    msg = 'User exists ' + 'id:' + str(account['id']) + ' username:' + account['username']
+.....

@@ -1,0 +1,27 @@
+{% extends 'ClientAttack/layout.html' %}
+
+{% block title %}Transfer Moneys{% endblock %}
+
+{% block variablepage %}
+    {% if request.cookies.get('id') == admin_id %}
+        <a href="{{ url_for('BankInboxRequests') }}"><i class="fas fa-user-circle"></i>Inbox Requests</a>
+    {% else %}
+        <a href="{{ url_for('BankRequestSupport') }}"><i class="fas fa-user-circle"></i>Request Support</a>
+        <!-- <a href="{{ url_for('BankInboxRequests') }}">Inbox Requests</a> -->
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+<h2>Transfer Moneys</h2>
+<div>
+    <p>Insert details below:</p>
+    <form action="BankTransferMoney" method="post">
+        <input type="text" name="destinationEmail" placeholder="destination" required>
+        <input type="number" name="amount" placeholder="amount" required>
+        <input type="submit" value="Send">
+    </form>
+    <p>{{msg}}</p>
+    
+</div>
+{% endblock %}

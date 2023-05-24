@@ -1,0 +1,20 @@
+This is partial source-code
+
+
+def SQLi_level6():
+    if request.authorization and request.authorization.username == 'level6' and request.authorization.password == passwords['level6']:
+        msg = ''
+        if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+            username = request.form['username'].replace("'","").replace('#','').replace('"','')
+            password = request.form['password']
+            hashedPassword = md5(password.encode('utf-8'))
+
+            with connection.cursor() as cursor:
+                query = "SELECT * FROM level7 WHERE username = '%s' AND password = '%s' " %(username, str(hashedPassword.digest())[2:-1])
+                print(query)
+                cursor.execute(query)
+                account = cursor.fetchone()
+                if account:
+                    return render_template('success.html')
+                else:
+                    msg = 'Incorrect password!'

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VulnProject | Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="homeBody">
+    <div class="container">
+
+        <header>
+            <h1>VulnProject | Home</h1><br>
+        </header>
+        
+        <main>
+            
+            <section class="homeLeftDescription">
+                <h2>Client Attacks | <a href="/BankLogin">VulnerableBank</a></h2>
+                <p>In this section a bank's web application is simulated, the aim of the challenge is to be able to obtain the <strong>three</strong> flags, an example of a flag is the following: {TH!S-IS-A-Fl4g}.<br>Each flag should be obtained by exploiting the following web attacks: CSRF, Cookie-Bruteforce and Data-Exfiltration. <br>The admin user is simulated by a bot.</p><br>
+            </section>
+            
+            <section class="homeRightDescription">
+                <h2>Server Attacks</h2>
+                <p>This section discusses SQL injection.<br>At each level the resolution difficulty increases, the access credentials of level zero are provided, the next ones will be displayed as the challenges are solved, eg: the resolution of level0 will give you the access credentials to the next level.</p>
+                <ul>
+                    <li><a href="/SQLi-level0">level0</a> level0:level0</li>
+                    <li><a href="/SQLi-level1">level1</a></li>
+                    <li><a href="/SQLi-level2">level2</a></li>
+                    <li><a href="/SQLi-level3">level3</a></li>
+                    <li><a href="/SQLi-level4">level4</a></li>
+                    <li><a href="/SQLi-level5">level5</a></li>
+                    <li><a href="/SQLi-level6">level6</a></li>
+                </ul>
+            </section>
+        </main>
+        <hr>
+        <footer>
+            <span>Made by <a href="https://tryhackme.com/p/WhiteGandalf">WhiteGandalf</a></span><br>
+        </footer>
+
+    </div>
+
+</body>
+</html>

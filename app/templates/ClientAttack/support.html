@@ -1,0 +1,27 @@
+{% extends 'ClientAttack/layout.html' %}
+
+{% block title %}Bank Support{% endblock %}
+
+{% block variablepage %}
+    {% if request.cookies.get('id') == admin_id %}
+        <a href="{{ url_for('BankInboxRequests') }}"><i class="fas fa-user-circle"></i>Inbox Requests</a>
+    {% else %}
+        <a href="{{ url_for('BankRequestSupport') }}"><i class="fas fa-user-circle"></i>Request Support</a>
+        <!-- <a href="{{ url_for('BankInboxRequests') }}">Inbox Requests</a> -->
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+<h2>Ask us for Support</h2>
+<div>
+    <p>Explain your problem here, one of our admin will visit your profile and read your message:</p>
+    <form action="BankRequestSupport" method="post">
+        <textarea name="text" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" value="Send">
+    </form>
+    <p>{{msg}}</p>
+    
+</div>
+{% endblock %}

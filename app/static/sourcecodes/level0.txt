@@ -1,0 +1,20 @@
+This is partial source-code
+
+
+def SQLi_level0():
+    if request.authorization and request.authorization.username == 'level0' and request.authorization.password == passwords['level0']:
+        msg = ''
+        if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+            username = request.form['username'].replace("'","").replace('#','').replace('"','')
+            password = request.form['password']
+            with connection.cursor() as cursor:
+                query = "SELECT * FROM level1 WHERE username = '%s' AND password = '%s' " %(username, password)
+                cursor.execute(query)
+                account = cursor.fetchone()
+
+                if account:
+                    
+                    return render_template('success.html')
+                else:
+                    msg = 'Incorrect password!'
+.....

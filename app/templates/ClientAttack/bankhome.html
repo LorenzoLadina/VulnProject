@@ -1,0 +1,21 @@
+{% extends 'ClientAttack/layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block variablepage %}
+    {% if request.cookies.get('id') == admin_id  %}
+        <a href="{{ url_for('BankInboxRequests') }}"><i class="fas fa-user-circle"></i>Inbox Requests</a>
+    {% else %}
+        <a href="{{ url_for('BankRequestSupport') }}"><i class="fas fa-user-circle"></i>Request Support</a>
+        <!-- <a href="{{ url_for('BankInboxRequests') }}">Inbox Requests</a> -->
+    {% endif %}
+
+{% endblock %}
+{% block content %}
+<h2>Home Page</h2>
+<p>Welcome back, {{ username }}!</p>
+    {% if request.cookies.get('id') == admin_id  %}
+        <p>{FLAG2-G6as2A!9U}</p>
+    {% endif %}
+{% endblock %}

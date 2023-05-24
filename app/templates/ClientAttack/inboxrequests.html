@@ -1,0 +1,25 @@
+{% extends 'ClientAttack/layout.html' %}
+
+{% block title %}Help Requests{% endblock %}
+
+{% block variablepage %}
+    {% if request.cookies.get('id') == admin_id %}
+        <a href="{{ url_for('BankInboxRequests') }}"><i class="fas fa-user-circle"></i>Inbox Requests</a>
+    {% else %}
+        <a href="{{ url_for('BankRequestSupport') }}"><i class="fas fa-user-circle"></i>Request Support</a>
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+<h2>Requests for help</h2>
+<div>
+
+    {% for message in messages %}
+        
+        <strong>{{message.from}}: </strong>
+        <text>{{message.text}}</text><br><br>
+    
+    {% endfor %}
+</div>
+{% endblock %}

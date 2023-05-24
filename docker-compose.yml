@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  flaskapp:
+    build: ./app
+    links:
+      - db
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - net
+  bot:
+    build: ./bot
+    links:
+      - db
+      - flaskapp
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - net
+  db:
+    container_name: db
+    image: mysql:8.0
+    ports:
+     - "42200:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 10s
+            retries: 10
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
