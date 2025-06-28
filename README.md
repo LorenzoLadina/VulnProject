@@ -30,7 +30,3 @@ If you are stuck you can consult /exploits directory
 cookies_bruteforce.py  exfilFlag.js  level4_exploit.py  level5_exploit.py  level6_exploit.py  orange-cats.html
 
 ```
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.You can vist my tryhackme profile at this link https://tryhackme.com/p/WhiteGandalf  Good Luck!
